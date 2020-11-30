@@ -96,6 +96,11 @@
                    in campus and after graduation at your work place.</p>    
              </div>             
           </div>
+             <div class="alert alert-success" role="alert">
+                 <h3 style="text-align: center; font-size: 30px; margin-top: 10px;" id="time"> </h3>
+                 <h2 style="text-align: center; font-size: 30px; margin-top: 0px;" id="greeting"></h2>
+              </div>
+
             <div class="alert alert-info alert-dismissible new">
               <button type="button" class="close" data-dismiss="alert">&times;</button>
               <h3 style="padding-bottom: 10px;">Ethiopia has set and started a new a freshman programs in higher educational institutes before 
@@ -252,6 +257,73 @@
             </div>
       </footer>
      </div>
+     
+<script>
+
+  const time = document.getElementById('time');
+  
+  
+  function showtime(){
+  
+   let today = new Date(), 
+   hour = today.getHours(),
+   min = today.getMinutes(),
+   sec = today.getSeconds();
+   let ampm; 
+  
+  //12 Hour Format
+  hour = hour%12 || 12
+  
+  if(sec < 10){
+      sec = "0" + sec 
+  }
+  if(min < 10){
+      min = "0" + min 
+  }
+  
+  //AM or PM
+  if (hour >= 18){
+      ampm = " PM"
+  }else{
+      ampm = " AM"
+  }
+  // time.innerHTML = `${hour}<span>:</span>${min}<span>:</span>${sec}`;
+   time.innerHTML = hour + "<span>:</span>" + min + "<span>:</span>" + sec + ampm;
+  
+  
+  
+  setInterval(showtime,1000)
+  }
+  
+  function addzero(e){
+  
+  }
+  
+  
+  function background(){
+   let today = new Date(),
+   hour = today.getHours(),
+   min = today.getMinutes(),
+   sec = today.getSeconds();
+  let greeting = document.getElementById('greeting')
+   if(hour>=6 && hour<12 ){
+      document.body.style.backgroundImage = "url(day.jpg)"
+      greeting.innerText = "Good Morning !"
+   }else if(hour>=12 && hour<18){
+      document.body.style.backgroundImage = "url(noon.jpg)"
+      greeting.innerText = "Good Afternoon !"
+   }else {
+      document.body.style.backgroundImage = "url(even.jpg)"
+      greeting.innerText = "Good Evening !"
+   }
+  
+  }
+  
+  //run
+  showtime();
+  background();
+  </script>
+  
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
